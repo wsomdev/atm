@@ -1,27 +1,36 @@
 <h2 mat-dialog-title>Créer un client</h2>
 <mat-dialog-content>
-  <mat-form-field appearance="outline">
-    <mat-label>Prénom</mat-label>
-    <input matInput />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Nom</mat-label>
-    <input matInput />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Date de naissance</mat-label>
-    <input matInput />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Addresse</mat-label>
-    <input matInput />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Gender</mat-label>
-    <input matInput />
-  </mat-form-field>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Prénom</mat-label>
+      <input matInput formControlName="firstname" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="lastname" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Date de naissance</mat-label>
+      <input matInput formControlName="birthdate" [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Addresse</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        @for (gender of genderValues; track gender) {
+        <mat-option [value]="gender">{{gender}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button matButton>Fermer</button>
-  <button matButton cdkFocusInitial>Créer</button>
+  <button matButton cdkFocusInitial [mat-dialog-close]="form.value" [disabled]="form.invalid">Créer</button>
 </mat-dialog-actions>
