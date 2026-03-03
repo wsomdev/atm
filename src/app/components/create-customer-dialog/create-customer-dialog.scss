@@ -1,0 +1,9 @@
+mat-dialog-content {
+  margin: 1rem;
+  padding: 0.5rem !important;
+  display: flex;
+  flex-direction: column;
+  mat-form-field {
+    width: 100%;
+  }
+}

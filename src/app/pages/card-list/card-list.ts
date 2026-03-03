@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { CUSTOMERS } from '../../models/data/customers.mock';
 import { MatListModule } from '@angular/material/list';
 import { CurrencyPipe } from '@angular/common';
+import { MatAnchor, MatButton } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateCustomerDialog } from '../../components/create-customer-dialog/create-customer-dialog';
 
 @Component({
   selector: 'app-card-list',
-  imports: [MatExpansionModule, MatIconModule, MatListModule, CurrencyPipe],
+  imports: [MatExpansionModule, MatIconModule, MatListModule, CurrencyPipe, MatAnchor, MatButton],
   templateUrl: './card-list.html',
   styleUrl: './card-list.scss',
 })
 export class CardList {
   public readonly CUSTOMERS = CUSTOMERS;
+  readonly dialog = inject(MatDialog);
+
+  public openModalCreate(): void {
+    this.dialog.open(CreateCustomerDialog, { minWidth: '60vw' });
+  }
 }
