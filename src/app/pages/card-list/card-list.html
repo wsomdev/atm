@@ -1,1 +1,14 @@
-<p>card-list works!</p>
+<div class="container">
+  <mat-accordion multi>
+    @for (customer of CUSTOMERS; track customer.fullname) {
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>{{customer.isMale ? 'man': 'woman'}}</mat-icon>
+          {{customer.fullname}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    }
+  </mat-accordion>
+</div>

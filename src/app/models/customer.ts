@@ -18,4 +18,8 @@ export class Customer {
   public get cards(): Card[] {
     return this._cards;
   }
+
+  public get isMale(): boolean {
+    return this._gender === Gender.MALE;
+  }
 }
