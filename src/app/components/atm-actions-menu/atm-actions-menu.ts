@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, effect, inject, input, output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -39,7 +39,9 @@ export function isMultiple(num: number): ValidatorFn {
 })
 export class AtmActionsMenu {
   private readonly _snackBar = inject(MatSnackBar);
+
   public readonly currentCard = input.required<Card>();
+  public readonly onExit = output<void>();
 
   public readonly withdrawal = new FormControl(null, [
     Validators.required,
@@ -92,5 +94,9 @@ export class AtmActionsMenu {
 
     this.withdrawal.addValidators(this.withdrawalMaxValidationRef);
     this.withdrawal.updateValueAndValidity();
+  }
+
+  public returnToHome(): void {
+    this.onExit.emit();
   }
 }

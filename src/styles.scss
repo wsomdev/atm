@@ -36,3 +36,9 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  margin: .5rem 0px;
+}
