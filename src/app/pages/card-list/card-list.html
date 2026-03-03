@@ -10,7 +10,10 @@
       </mat-expansion-panel-header>
       <mat-list>
         @for (card of customer.cards; track card.cardNumber) {
-        <mat-list-item>{{card.bank}} - {{card.cardNumber}} - {{card.balance|currency:'EUR'}}</mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>{{card.bank}} - {{card.cardNumber}}</span>
+          <span matListItemLine>{{card.balance | currency:'EUR'}}</span>
+        </mat-list-item>
         }
       </mat-list>
     </mat-expansion-panel>
