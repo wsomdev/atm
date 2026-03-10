@@ -12,6 +12,10 @@
         <mat-panel-title>
           <mat-icon>{{customer.isMale ? 'man': 'woman'}}</mat-icon>
           {{customer.fullname}}
+          <button matButton class="spaced" (click)="addCardModal($event, customer)">
+            Ajouter une carte
+            <mat-icon>add</mat-icon>
+          </button>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-list>

@@ -9,6 +9,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateCustomerDialog } from '../../components/create-customer-dialog/create-customer-dialog';
 import { Customer } from '../../models/customer';
 import { ICreateCustomerDto } from '../../models/interfaces/create-customer-dto.interface';
+import { CreateCardDialog } from '../../components/create-card-dialog/create-card-dialog';
+import { ICreateCardDto } from '../../models/interfaces/create-card-dto.interface';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-card-list',
@@ -32,6 +35,24 @@ export class CardList {
           value.gender,
           value.address,
           [],
+        );
+      }
+    });
+  }
+
+  public addCardModal(ev: PointerEvent, customer: Customer):void {
+    ev.stopImmediatePropagation();
+
+    const dialogRef = this.dialog.open(CreateCardDialog, { minWidth: '60vw' });
+
+    dialogRef.afterClosed().subscribe((value: ICreateCardDto) => {
+      if (value) {
+        const newCard = new Card(
+          value.cardNumber,
+          value.type,
+          value.bank,
+          value.pin,
+          value.balance,
         );
       }
     });

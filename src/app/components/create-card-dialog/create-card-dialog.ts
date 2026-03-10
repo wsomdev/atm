@@ -25,11 +25,20 @@ export class CreateCardDialog {
   readonly dialogRef = inject(MatDialogRef<CreateCardDialog>);
 
   public readonly form = new FormGroup({
-    cardNumber: new FormControl('', [Validators.required]),
+    cardNumber: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(19),
+      Validators.minLength(19),
+    ]),
     bank: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
-    pin: new FormControl('', [Validators.required]),
-    balance: new FormControl('', [Validators.required]),
+    pin: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(4),
+      Validators.minLength(4),
+      Validators.pattern(/[0-9]+/g),
+    ]),
+    balance: new FormControl('', [Validators.required, Validators.min(0)]),
   });
 
   public readonly bankTypeValues = Object.values(BankType);
