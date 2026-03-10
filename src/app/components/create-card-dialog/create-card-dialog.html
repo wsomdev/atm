@@ -2,24 +2,30 @@
 <mat-dialog-content>
   <form [formGroup]="form">
     <mat-form-field appearance="outline">
-      <mat-label>Prénom</mat-label>
-      <input matInput formControlName="firstname" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Nom</mat-label>
-      <input matInput formControlName="lastname" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Addresse</mat-label>
-      <input matInput formControlName="address" />
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Gender</mat-label>
-      <mat-select formControlName="gender">
-        @for (gender of genderValues; track gender) {
-        <mat-option [value]="gender">{{gender}}</mat-option>
+      <mat-label>Banque</mat-label>
+      <mat-select formControlName="bank">
+        @for (bank of bankTypeValues; track bank) {
+        <mat-option [value]="bank">{{bank}}</mat-option>
         }
       </mat-select>
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        @for (type of cardTypeValues; track type) {
+        <mat-option [value]="type">{{type}}</mat-option>
+        }
+      </mat-select>
+      <mat-form-field appearance="outline">
+        <mat-label>Numéro de carte</mat-label>
+        <input matInput formControlName="cardNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Code PIN</mat-label>
+        <input matInput formControlName="pin" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Solde de départ</mat-label>
+        <input matInput formControlName="balance" />
+      </mat-form-field>
     </mat-form-field>
   </form>
 </mat-dialog-content>
