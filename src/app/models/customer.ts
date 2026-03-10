@@ -1,5 +1,6 @@
 import { Card } from './card';
 import { Gender } from './enums/gender.enum';
+import { ICreateCustomerDto } from './interfaces/create-customer-dto.interface';
 
 export class Customer {
   constructor(
@@ -21,5 +22,26 @@ export class Customer {
 
   public get isMale(): boolean {
     return this._gender === Gender.MALE;
+  }
+
+  public toDto(): ICreateCustomerDto {
+    return {
+      birthdate: this._birthdate,
+      firstname: this._firstname,
+      lastname: this._lastname,
+      gender: this._gender,
+      address: this._address,
+    };
+  }
+
+  public static fromDto(customer: ICreateCustomerDto): Customer {
+    return new Customer(
+      customer.birthdate,
+      customer.firstname,
+      customer.lastname,
+      customer.gender,
+      customer.address,
+      [],
+    );
   }
 }
