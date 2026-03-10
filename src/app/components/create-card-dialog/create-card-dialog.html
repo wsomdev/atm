@@ -8,24 +8,26 @@
         <mat-option [value]="bank">{{bank}}</mat-option>
         }
       </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Type</mat-label>
       <mat-select formControlName="type">
         @for (type of cardTypeValues; track type) {
         <mat-option [value]="type">{{type}}</mat-option>
         }
       </mat-select>
-      <mat-form-field appearance="outline">
-        <mat-label>Numéro de carte</mat-label>
-        <input matInput formControlName="cardNumber" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Code PIN</mat-label>
-        <input matInput formControlName="pin" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Solde de départ</mat-label>
-        <input matInput formControlName="balance" />
-      </mat-form-field>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Numéro de carte</mat-label>
+      <input matInput formControlName="cardNumber" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Code PIN</mat-label>
+      <input matInput formControlName="pin" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Solde de départ</mat-label>
+      <input matInput formControlName="balance" />
     </mat-form-field>
   </form>
 </mat-dialog-content>
