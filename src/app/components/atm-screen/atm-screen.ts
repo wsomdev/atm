@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { PinPad } from '../pin-pad/pin-pad';
 import { AtmActionsMenu } from '../atm-actions-menu/atm-actions-menu';
 import { AtmCardSelection } from '../atm-card-selection/atm-card-selection';
 import { AtmLanding } from '../atm-landing/atm-landing';
 import { AtmStep } from '../../models/enums/atm-step.enum';
 import { Card } from '../../models/card';
-import { CUSTOMERS } from '../../models/data/customers.mock';
+import { Customer } from '../../models/customer';
 
 @Component({
   selector: 'app-atm-screen',
@@ -14,6 +14,7 @@ import { CUSTOMERS } from '../../models/data/customers.mock';
   styleUrl: './atm-screen.scss',
 })
 export class AtmScreen {
+  public readonly customers = input.required<Customer[]>();
   public readonly AtmStep = AtmStep;
 
   public currentStep = AtmStep.LANDING;

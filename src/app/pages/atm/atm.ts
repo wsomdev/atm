@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AtmScreen } from '../../components/atm-screen/atm-screen';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-atm',
@@ -7,4 +8,8 @@ import { AtmScreen } from '../../components/atm-screen/atm-screen';
   templateUrl: './atm.html',
   styleUrl: './atm.scss',
 })
-export class Atm {}
+export class Atm {
+  public readonly customerService = inject(CustomerService);
+
+  public readonly CUSTOMERS = this.customerService.customers;
+}

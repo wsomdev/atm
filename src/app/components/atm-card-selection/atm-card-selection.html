@@ -1,5 +1,5 @@
 <h2>Merci de sélectionnez votre carte</h2>
-@for (customer of customers; track customer.fullname) {
+@for (customer of customers(); track customer.fullname) {
 <h3>{{customer.fullname}}</h3>
 @for(card of customer.cards; track card.cardNumber) {
 <mat-card appearance="outlined">

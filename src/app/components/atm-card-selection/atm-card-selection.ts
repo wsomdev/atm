@@ -1,8 +1,8 @@
-import { Component, output } from '@angular/core';
-import { CUSTOMERS } from '../../models/data/customers.mock';
-import { MatCardModule } from '@angular/material/card';
+import { Component, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { Card } from '../../models/card';
+import { Customer } from '../../models/customer';
 
 @Component({
   selector: 'app-atm-card-selection',
@@ -11,7 +11,7 @@ import { Card } from '../../models/card';
   styleUrl: './atm-card-selection.scss',
 })
 export class AtmCardSelection {
-  public readonly customers = CUSTOMERS;
+  public readonly customers = input.required<Customer[]>();
 
   public readonly onChooseCard = output<Card>();
 

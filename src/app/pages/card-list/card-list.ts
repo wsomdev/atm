@@ -12,6 +12,7 @@ import { ICreateCustomerDto } from '../../models/interfaces/create-customer-dto.
 import { CreateCardDialog } from '../../components/create-card-dialog/create-card-dialog';
 import { ICreateCardDto } from '../../models/interfaces/create-card-dto.interface';
 import { Card } from '../../models/card';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-card-list',
@@ -20,8 +21,10 @@ import { Card } from '../../models/card';
   styleUrl: './card-list.scss',
 })
 export class CardList {
-  public readonly CUSTOMERS = CUSTOMERS;
-  readonly dialog = inject(MatDialog);
+  public readonly dialog = inject(MatDialog);
+  public readonly customerService = inject(CustomerService);
+
+  public readonly CUSTOMERS = this.customerService.customers;
 
   public openModalCreate(): void {
     const dialogRef = this.dialog.open(CreateCustomerDialog, { minWidth: '60vw' });
