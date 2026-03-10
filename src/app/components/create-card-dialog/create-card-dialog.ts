@@ -6,11 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Gender } from '../../models/enums/gender.enum';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
-  selector: 'app-create-customer-dialog',
+  selector: 'app-create-card-dialog',
   imports: [
     MatFormFieldModule,
     MatInputModule,
@@ -18,14 +16,12 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     MatDialogModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatDatepickerModule,
   ],
-  providers: [provideNativeDateAdapter()],
-  templateUrl: './create-customer-dialog.html',
-  styleUrl: './create-customer-dialog.scss',
+  templateUrl: './create-card-dialog.html',
+  styleUrl: './create-card-dialog.scss',
 })
-export class CreateCustomerDialog {
-  readonly dialogRef = inject(MatDialogRef<CreateCustomerDialog>);
+export class CreateCardDialog {
+  readonly dialogRef = inject(MatDialogRef<CreateCardDialog>);
 
   public readonly form = new FormGroup({
     firstname: new FormControl('', [Validators.required]),
