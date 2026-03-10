@@ -29,7 +29,24 @@ export class CustomerService {
     }
   }
 
+  private toString(values: Customer[]): string | undefined {
+    try {
+      return JSON.stringify(values.map((v) => v.toDto()));
+    } catch (error) {
+      return undefined;
+    }
+  }
+
   public get customers(): Customer[] {
     return this._customers;
+  }
+
+  public updateCustomers(): void {
+    if (this.customers?.length) {
+      const customerString = this.toString(this._customers);
+      if (customerString) {
+        localStorage.setItem(this.LOCAL_STORAGE_KEY, customerString);
+      }
+    }
   }
 }
