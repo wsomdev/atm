@@ -47,6 +47,13 @@ export class CustomerService {
       if (customerString) {
         localStorage.setItem(this.LOCAL_STORAGE_KEY, customerString);
       }
+      this._customers = [...this.customers]
     }
+  }
+
+  public addCustomer(customer: ICreateCustomerDto): void {
+    const newCustomer = Customer.fromDto(customer);
+    this._customers.push(newCustomer);
+    this.updateCustomers();
   }
 }

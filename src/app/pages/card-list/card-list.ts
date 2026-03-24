@@ -31,19 +31,12 @@ export class CardList {
 
     dialogRef.afterClosed().subscribe((value: ICreateCustomerDto) => {
       if (value) {
-        const newCustomer = new Customer(
-          value.birthdate,
-          value.firstname,
-          value.lastname,
-          value.gender,
-          value.address,
-          [],
-        );
+        this.customerService.addCustomer(value);
       }
     });
   }
 
-  public addCardModal(ev: PointerEvent, customer: Customer):void {
+  public addCardModal(ev: PointerEvent, customer: Customer): void {
     ev.stopImmediatePropagation();
 
     const dialogRef = this.dialog.open(CreateCardDialog, { minWidth: '60vw' });
